@@ -1,0 +1,35 @@
+# GET http://localhost:3000/GET/23 HTTP/1.1
+
+# GET http://localhost:3000/GET?name=ml&&age=23 HTTP/1.1
+
+# POST http://localhost:3000/POST HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name":"ml",
+#     "age":23
+# }
+
+
+# 模块化请求
+# GET http://localhost:3000/list/33 HTTP/1.1 
+
+# GET http://localhost:3000/list/99 HTTP/1.1
+
+# GET  http://localhost:3000/list/getList HTTP/1.1
+
+# POST http://localhost:3000/user/regUser HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name":"ml",
+#     "age":23
+# }
+
+POST http://localhost:3000/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"ml",
+    "password":"123456"
+}

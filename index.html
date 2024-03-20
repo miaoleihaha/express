@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    ===
+</body>
+<script>
+    // 默认get请求 同源策略 协议 端口 域名 
+    // fetch("http://localhost:3000/list/getList")
+    //     .then(res => res.json())
+    //     .then(data => console.log(data)
+
+    //     )
+    // 默认get请求 同源策略 协议 端口 域名 
+    // OPTION 预检请求
+    // 非常规请求会 option 预检请求
+    // fetch("http://localhost:3000/patch",{
+    //     method:"PATCH",
+    // })
+    //     .then(res => res.text())
+    //     .then(data => console.log(data)
+
+    //     )
+    // 请求头使用Content-Type/application/json
+    //rors Content-type: application/x-www-form-urlencoded//name=1&age=2 | multipart/form-data//new FormData() | text/plain//纯文本
+    // fetch("http://localhost:3000/user/login", {
+    //     method: "POST",
+    //     headers:{
+    //         'Content-Type':'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //         'name': "ml",
+    //         age: 23
+    //     })
+    // })
+    //     .then(res => res.json())
+    //     .then(data => console.log(data)
+
+    //     )
+    // 自定义请求头
+    // fetch("http://localhost:3000/get").then((res) =>{
+    //     const headers = res.headers;
+    //     console.log(headers.get("ml"));
+    //     return res.json()
+    // }).then(data => console.log(data))
+
+
+    // sse webSocket属于全双工通讯，也就是前端可以给后端实时发送，后端也可以给前端实时发送，SSE属于单工通讯，后端可以给前端实时发送
+    // 增加该响应头text/event-stream就变成了sse
+    const sse = new EventSource('http://localhost:3000/sse')
+    sse.addEventListener('test', (event) => {
+    console.log(event.data)
+})
+    // fetch("http://localhost:3000/sse").then((res) => {
+    //   return res.json()  
+    // }).then(data=>console.log(data))
+</script>
+
+</html>
