@@ -16,10 +16,17 @@ app.use(express.json())//post请求需要中间件支持 express.json做解析
 // 保存请求日志
 // app.use(loggerMiddleware)
 // 设置响应头
+app.use((req, res, next) => {
+    console.log('i2n');
+    next()
+})
 app.use('*', headerMiddleware)
 app.use('/list', List)
 app.use('/user', User)
-
+app.use((req, res, next) => {
+    console.log('in');
+    next()
+})
 // 动态参数req.params
 // app.get("/get/:age", (req, res) => {
 //     console.log(req.params.age);//23
@@ -56,7 +63,6 @@ app.use('/user', User)
 // sse webSocket属于全双工通讯，也就是前端可以给后端实时发送，后端也可以给前端实时发送，SSE属于单工通讯，后端可以给前端实时发送
 // 增加该响应头text/event-stream就变成了sse
 app.get("/sse", (req, res) => {
-    console.log('in');
     res.setHeader('Content-Type', 'text/event-stream')
     res.status(200)
     // setInterval(() => {
